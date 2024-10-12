@@ -1,12 +1,10 @@
-<!-- CreateAccount.vue -->
-
-<script>
+<script lang="ts">
 import { ref } from 'vue'
 import { useVueform, Vueform } from '@vueform/vueform'
 
 export default {
   mixins: [Vueform],
-  setup(props, context) {
+  setup(props: unknown, context: unknown) {
     const form = useVueform(props, context)
 
     const vueform = ref({

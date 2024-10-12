@@ -6,7 +6,7 @@ import Panel from 'primevue/panel'
 </script>
 
 <template>
-  <main class="p-4">
+  <main class="p-4 max-w-screen-md md:mx-auto">
     <Panel header="公告" toggleable class="">
       <p class="m-0">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -41,7 +41,7 @@ import Panel from 'primevue/panel'
       >系统功能</Divider
     >
     <div class="grid grid-cols-3 gap-2">
-      <div class="card border shadow-md rounded-md p-2" v-for="i in 8" :key="i">
+      <div class="card border shadow-sm rounded-md p-2" v-for="i in 8" :key="i">
         <div class="flex justify-center items-center m-3">
           <CommunityIcon />
         </div>
@@ -75,7 +75,7 @@ import Panel from 'primevue/panel'
     <Divider
       layout="horizontal"
       align="center"
-      class="text-sm font-light text-slate-400 text-opacity-80 pt-6"
+      class="text-sm font-light text-slate-400 text-opacity-80 mt-16"
     >
       我也是有底线的
     </Divider>
