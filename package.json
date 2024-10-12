@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "@primevue/themes": "^4.1.0",
-    "@vueform/vueform": "^1.10.10",
     "pinia": "^2.2.4",
     "primevue": "^4.1.0",
     "tailwindcss-primeui": "^0.3.4",
