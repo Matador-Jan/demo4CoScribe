@@ -3,6 +3,9 @@ import { ref, reactive } from 'vue'
 import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
 import Divider from 'primevue/divider'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const user = reactive({
   account: '',
@@ -11,6 +14,11 @@ const user = reactive({
 
 const onLogin = () => {
   console.log(user)
+  const { account, password } = user
+  if (account == 'test' && password == 'test1234') {
+    localStorage.setItem('isAuthenticated', 'Yes')
+    router.push('/')
+  }
 }
 </script>
 
@@ -27,5 +35,3 @@ const onLogin = () => {
     </div>
   </main>
 </template>
-
-<style scoped></style>

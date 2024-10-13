@@ -1,10 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '@/views/HomeView.vue'
 import LoginView from '@/views/LoginView.vue'
+import LoadingView from '@/views/LoadingView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: '/loading',
+      name: 'loading',
+      component: LoadingView,
+    },
     {
       path: '/login',
       name: 'login',
@@ -24,6 +30,19 @@ const router = createRouter({
       component: () => import('../views/AboutView.vue'),
     },
   ],
+})
+
+router.beforeEach(async (to, from) => {
+  const isAuthenticated = !!localStorage.getItem('isAuthenticated')
+  if (
+    // 检查用户是否已登录
+    !isAuthenticated &&
+    // ❗️ 避免无限重定向
+    to.name !== 'login'
+  ) {
+    // 将用户重定向到登录页面
+    return { name: 'login' }
+  }
 })
 
 export default router
