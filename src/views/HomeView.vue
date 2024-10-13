@@ -3,11 +3,31 @@ import CommunityIcon from '../components/icons/IconCommunity.vue'
 import Divider from 'primevue/divider'
 import Fieldset from 'primevue/fieldset'
 import Panel from 'primevue/panel'
+import Button from 'primevue/button'
+import { ref } from 'vue'
+
+const isCollapsed = ref(true)
+
+const recommendCode = ref(
+  (() => Math.floor(100000 + Math.random() * 900000).toString())(),
+)
+
+const copyRecommendCode = () => {
+  navigator.clipboard
+    .writeText(recommendCode.value)
+    .then(() => {
+      console.log('已复制到剪贴板')
+      alert('已复制: ' + recommendCode.value)
+    })
+    .catch(err => {
+      console.error('复制失败: ', err)
+    })
+}
 </script>
 
 <template>
   <main class="p-4 max-w-screen-md md:mx-auto">
-    <Panel header="公告" toggleable class="">
+    <Panel header="公告" toggleable :collapsed="isCollapsed" class="">
       <p class="m-0">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -52,33 +72,46 @@ import Panel from 'primevue/panel'
     <Divider layout="horizontal" align="center">推广</Divider>
 
     <Fieldset legend="我的推荐码" class="flex flex-col">
-      <span class="m-0 font-thin text-left text-sm">234987</span>
+      <div class="flex justify-between items-center">
+        <span class="m-0 font-thin text-left text-sm">{{ recommendCode }}</span>
+        <Button
+          label="复制"
+          icon="pi pi-copy"
+          class=""
+          @click="copyRecommendCode"
+        />
+      </div>
     </Fieldset>
-    <div class="flex gap-1">
-      <Fieldset legend="推广海报" class="flex-1 py-2 px-2">
-        <p class="m-0 font-thin text-right text-sm">A(点击查看)</p>
-      </Fieldset>
-      <Fieldset legend="推广海报" class="flex-1 py-2 px-2">
-        <p class="m-0 font-thin text-right text-sm">B(点击查看)</p>
-      </Fieldset>
-    </div>
+
+    <Fieldset legend="推广海报" class="pb-1 px-1">
+      <div class="flex items-center justify-between">
+        <Button label="海报A" link class="mx-2 flex-1" />
+        <Button label="海报B" link class="mx-2 flex-1" />
+      </div>
+    </Fieldset>
 
     <Divider layout="horizontal" class="flex" align="center">提现</Divider>
+
     <div class="flex gap-1">
-      <Fieldset legend="提现按钮" class="flex-1 py-2 px-2">
-        <p class="m-0 font-thin text-right text-sm">(点击提现)</p>
+      <Fieldset legend="支付宝" class="flex items-center justify-between">
+        <span class="pr-4">已绑定</span>
+        <Button label="重新绑定" outlined severity="danger" />
       </Fieldset>
-      <Fieldset legend="支付宝绑定" class="flex-1 py-2 px-2">
-        <p class="m-0 font-thin text-right text-sm">(点击绑定)</p>
-      </Fieldset>
+      <Button label="提现" class="flex-1" />
     </div>
+
     <Divider
       layout="horizontal"
       align="center"
       class="text-sm font-light text-slate-400 text-opacity-80 mt-16"
     >
-      我也是有底线的
     </Divider>
+    <div class="flex gap-1 my-4">
+      <Button label="修改密码" class="flex-1" severity="danger" />
+      <Button label="退出系统" class="flex-1" severity="secondary" />
+    </div>
+
+    <Divider layout="horizontal" align="center"> </Divider>
   </main>
 </template>
 

@@ -1,9 +1,11 @@
 import './assets/style.css'
+import 'primeicons/primeicons.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
+
 // import Vueform from '@vueform/vueform'
 // import vueformConfig from '../vueform.config.js'
 
