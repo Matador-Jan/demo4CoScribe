@@ -29,8 +29,6 @@ onMounted(() => {
     <LoginForm />
   </div>
 
-  <!-- <Button label="Show" @click="visible = true" /> -->
-
   <Dialog v-model:visible="visible" modal class="w-80">
     <template #container>
       <div class="p-4">

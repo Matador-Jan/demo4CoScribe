@@ -4,6 +4,7 @@ import InputText from 'primevue/inputtext'
 import Button from 'primevue/button'
 import Divider from 'primevue/divider'
 import { useRouter } from 'vue-router'
+import { login } from '../utils/axios/api.js'
 
 const router = useRouter()
 
@@ -12,13 +13,16 @@ const user = reactive({
   password: '',
 })
 
-const onLogin = () => {
+const onLogin = async () => {
   console.log(user)
   const { account, password } = user
-  if (account == 'test' && password == 'test1234') {
-    localStorage.setItem('isAuthenticated', 'Yes')
-    router.push('/')
-  }
+  const result = await login({ username: account, password })
+  console.log('result:', result)
+
+  // if (account == 'test' && password == 'test1234') {
+  //   localStorage.setItem('isAuthenticated', 'Yes')
+  //   router.push('/')
+  // }
 }
 </script>
 

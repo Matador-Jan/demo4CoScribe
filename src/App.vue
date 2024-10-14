@@ -1,9 +1,10 @@
 <script setup lang="ts">
+import Toolbar from './components/Toolbar.vue'
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
-  <header>
+  <!-- <header>
     <div class="wrapper">
       <nav class="border-b-2">
         <RouterLink to="/">Home</RouterLink>
@@ -12,8 +13,9 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/loading">Loading</RouterLink>
       </nav>
     </div>
-  </header>
+  </header> -->
 
+  <Toolbar />
   <RouterView />
 </template>
 
