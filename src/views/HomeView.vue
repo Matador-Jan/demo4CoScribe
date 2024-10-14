@@ -6,8 +6,15 @@ import Fieldset from 'primevue/fieldset'
 import Panel from 'primevue/panel'
 import Button from 'primevue/button'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const isCollapsed = ref(true)
+const onLogout = () => {
+  localStorage.removeItem('isAuthenticated')
+  router.push('/login')
+}
 </script>
 
 <template>
@@ -64,7 +71,12 @@ const isCollapsed = ref(true)
     </Divider>
     <div class="flex gap-1 my-4">
       <Button label="修改密码" class="flex-1" severity="danger" />
-      <Button label="退出系统" class="flex-1" severity="secondary" />
+      <Button
+        label="退出系统"
+        class="flex-1"
+        severity="secondary"
+        @click="onLogout"
+      />
     </div>
 
     <Divider layout="horizontal" align="center"> </Divider>
