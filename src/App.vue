@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Toolbar from './components/Toolbar.vue'
 import { RouterLink, RouterView } from 'vue-router'
+import Toast from 'primevue/toast'
 </script>
 
 <template>
@@ -15,6 +16,7 @@ import { RouterLink, RouterView } from 'vue-router'
     </div>
   </header> -->
 
+  <Toast />
   <Toolbar />
   <RouterView />
 </template>

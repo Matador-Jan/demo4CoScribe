@@ -1,7 +1,8 @@
 import axios from 'axios'
 
 const service = axios.create({
-  baseURL: '/api/admin',
+  // baseURL: 'http://47.116.36.108:7001',
+  baseURL: '/',
   timeout: 5000,
   headers: {
     Authorization: 'Bearer ' + localStorage.getItem('token'),

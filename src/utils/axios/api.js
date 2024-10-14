@@ -7,19 +7,8 @@ export function getUserApp(id) {
   return service.get('/getUserApp/' + id)
 }
 
-// 发起post请求，可以后跟params
-export function postSth(obj) {
-  return service.post('/test', {
-    params: {
-      obj,
-    },
-  })
-}
-
 export function login(obj) {
-  return service.post('/login', {
-    params: {
-      ...obj,
-    },
+  return service.post('/api/admin/login', {
+    ...obj,
   })
 }
